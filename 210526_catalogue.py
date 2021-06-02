@@ -1,35 +1,29 @@
-#openfile
-file = open("catalogue_","a")
+#imports
+import folium
+import webbrowser
+import csv
 
-#catalogue structure
-name = []
-year = []
-architect = []
-picture = []
-description = []
-catalogue = [[name],[year],[architect],[picture],[description]]
+#create catalogue
+catalogue = []
 
-#inputs
-while True:
-    n = input("Input building name: ")
-    name = name.append(n)
+#read items csv
+with open("items.csv",mode="r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        item = {}
+        item["latitude"] = row["latitude"]
+        item["longitude"] = row["longitude"]
+        item["name"] = row["name"]
+        catalogue.append(item)
 
-    y = input("Input building year: ")
-    year = year.append(y)
+#create map
+map = folium.Map(location=[52.2088214,0.1199476], zoom_start=14)
 
-    a = input("Input building architect: ")
-    architect = architect.append(a)
+#add markers
+for item in catalogue:
+    folium.Marker([item["latitude"],item["longitude"]], popup = item["name"]).add_to(map)
 
-    p = input("Attach picture: ")
-    picture = picture.append(p)
-
-    d = input("Input building description: ")
-    description = description.append(d)
-    break
-
-print(catalogue)
-
-#save list
-for element in catalogue:
-    file.write(element+"\n")
-file.close()
+#display map
+filepath = "C:/Users/USER/OneDrive - The Chinese University of Hong Kong/CODING/210526_catalogue/map.html"
+map.save(filepath)
+webbrowser.open(filepath)
