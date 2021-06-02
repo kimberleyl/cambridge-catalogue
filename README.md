@@ -7,3 +7,5 @@ Virtual architectural tour of Cambridge.
 3. ability to create new entry on app
 4. ability to bookmark locations
 5. ability to sort by genre/tags (description tags?)
+
+#testing

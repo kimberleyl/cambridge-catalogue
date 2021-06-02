@@ -1,6 +1,7 @@
 #imports
 import folium
 import webbrowser
+
 import csv
 
 #create catalogue
