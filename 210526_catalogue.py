@@ -2,8 +2,6 @@
 import folium
 import webbrowser
 import csv
-import base64
-import pandas
 from folium import IFrame
 import requests
 import geocoder
@@ -38,17 +36,10 @@ folium.TileLayer('stamentoner').add_to(map)
 #add markers
 for item in catalogue:
 
-    #image
-    # html = '<img src="data:image/JPG;base64,{}">'.format
-    # encoded = base64.b64encode(requests.get(item["image"]).content).decode()
-    # iframe = IFrame(html(encoded), width=632+20, height=420+20)
-    # picture = folium.Popup(iframe, max_width=1000)
-    # "<img src=",item["image"],"height=1420px width=2900px>"
-
     popup_ = '<b>'+item['name']+'</b>'+'<br>'+item["year"]+'<br>'+item["architect"]+'<br>'+"<img src="+item["image"]+" width=300px>"+'<br>'+item["description"]
     folium.CircleMarker([item["latitude"],item["longitude"]], radius=5, popup=popup_, color="#ff0000",fill=True, fill_opacity=100).add_to(map)
 
 #display map
-filepath = "C:/Users/USER/OneDrive - The Chinese University of Hong Kong/CODING/210526_catalogue/map.html"
+filepath = "C:/Users/USER/OneDrive - The Chinese University of Hong Kong/CODING/210526_catalogue/cambridge-catalogue/map.html"
 map.save(filepath)
 webbrowser.open(filepath)
