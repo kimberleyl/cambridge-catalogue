@@ -8,4 +8,8 @@ Virtual architectural tour of Cambridge.
 4. ability to bookmark locations
 5. ability to sort by genre/tags (description tags?)
 
-#testing
+# to be solved:
+- pop up formatting
+- image in pop up
+- obtaining user location as the default location at the start
+- direct link to google sheet csv
